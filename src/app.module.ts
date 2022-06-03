@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ListingsModule } from './listings/listings.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLDateTime } from 'graphql-iso-date';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
       typePaths: ['./**/*.graphql'],
+      resolvers: { DateTime: GraphQLDateTime },
     }),
     ListingsModule,
   ],

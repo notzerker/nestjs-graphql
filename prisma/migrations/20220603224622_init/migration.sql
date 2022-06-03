@@ -1,0 +1,11 @@
+-- CreateTable
+CREATE TABLE "Listing" (
+    "signer" INTEGER NOT NULL,
+    "collection" INTEGER NOT NULL,
+    "tokenId" INTEGER NOT NULL,
+    "price" INTEGER NOT NULL,
+    "nonce" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "startTime" INTEGER NOT NULL,
+    "endTime" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

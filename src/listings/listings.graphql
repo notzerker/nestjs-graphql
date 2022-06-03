@@ -1,11 +1,24 @@
+scalar DateTime
+
 type Listing {
-  # Example field (placeholder)
-  exampleField: Int
+  signer: Int!
+  collection: Int!
+  tokenId: Int!
+  price: Int!
+  nonce: Int!
+  startTime: Int!
+  endTime: Int!
+  createdAt: DateTime
 }
 
 input CreateListingInput {
-  # Example field (placeholder)
-  exampleField: Int
+  signer: Int!
+  collection: Int!
+  tokenId: Int!
+  price: Int!
+  nonce: Int!
+  startTime: Int!
+  endTime: Int!
 }
 
 input UpdateListingInput {
