@@ -1,0 +1,24 @@
+type Listing {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateListingInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateListingInput {
+  id: Int!
+}
+
+type Query {
+  listings: [Listing]!
+  listing(id: Int!): Listing
+}
+
+type Mutation {
+  createListing(createListingInput: CreateListingInput!): Listing!
+  updateListing(updateListingInput: UpdateListingInput!): Listing!
+  removeListing(id: Int!): Listing
+}
