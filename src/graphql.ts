@@ -8,12 +8,18 @@
 /* tslint:disable */
 /* eslint-disable */
 export class CreateListingInput {
+    layerZeroChainId: number;
     signer: string;
+    buyer?: Nullable<string>;
     collection: string;
     tokenId: number;
     price: number;
+    nonce: number;
+    isCrosschain: boolean;
     startTime: number;
     endTime: number;
+    status?: Nullable<number>;
+    createdAt?: Nullable<DateTime>;
 }
 
 export class UpdateListingInput {
@@ -22,13 +28,17 @@ export class UpdateListingInput {
 
 export class Listing {
     id: number;
+    layerZeroChainId: number;
     signer: string;
+    buyer?: Nullable<string>;
     collection: string;
     tokenId: number;
     price: number;
     nonce: number;
+    isCrosschain: boolean;
     startTime: number;
     endTime: number;
+    status?: Nullable<number>;
     createdAt?: Nullable<DateTime>;
 }
 

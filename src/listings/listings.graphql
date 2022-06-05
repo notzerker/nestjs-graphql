@@ -2,23 +2,33 @@ scalar DateTime
 
 type Listing {
   id: Int!
+  layerZeroChainId: Int!
   signer: String!
+  buyer: String
   collection: String!
   tokenId: Int!
   price: Int!
   nonce: Int!
+  isCrosschain: Boolean!
   startTime: Int!
   endTime: Int!
+  status: Int
   createdAt: DateTime
 }
 
 input CreateListingInput {
+  layerZeroChainId: Int!
   signer: String!
+  buyer: String
   collection: String!
   tokenId: Int!
   price: Int!
+  nonce: Int!
+  isCrosschain: Boolean!
   startTime: Int!
   endTime: Int!
+  status: Int
+  createdAt: DateTime
 }
 
 input UpdateListingInput {

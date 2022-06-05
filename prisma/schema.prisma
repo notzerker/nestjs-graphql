@@ -11,13 +11,17 @@ datasource db {
 }
 
 model Listing {
-  id         Int      @id @default(autoincrement())
-  signer     String
-  collection String
-  tokenId    Int
-  price      Int
-  nonce      Int
-  startTime  Int
-  endTime    Int
-  createdAt  DateTime @default(now())
+  id               Int      @id @default(autoincrement())
+  layerZeroChainId Int
+  signer           String
+  buyer            String?
+  collection       String
+  tokenId          Int
+  price            Int
+  nonce            Int
+  isCrosschain     Boolean
+  status           Int
+  startTime        Int
+  endTime          Int
+  createdAt        DateTime @default(now())
 }
