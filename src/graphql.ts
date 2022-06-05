@@ -8,7 +8,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export class CreateListingInput {
-    exampleField?: Nullable<number>;
+    signer: string;
+    collection: string;
+    tokenId: number;
+    price: number;
+    startTime: number;
+    endTime: number;
 }
 
 export class UpdateListingInput {
@@ -16,7 +21,15 @@ export class UpdateListingInput {
 }
 
 export class Listing {
-    exampleField?: Nullable<number>;
+    id: number;
+    signer: string;
+    collection: string;
+    tokenId: number;
+    price: number;
+    nonce: number;
+    startTime: number;
+    endTime: number;
+    createdAt?: Nullable<DateTime>;
 }
 
 export abstract class IQuery {
@@ -33,4 +46,5 @@ export abstract class IMutation {
     abstract removeListing(id: number): Nullable<Listing> | Promise<Nullable<Listing>>;
 }
 
+export type DateTime = any;
 type Nullable<T> = T | null;

@@ -1,23 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '.prisma/client';
+import { PrismaService } from 'prisma/prisma.service';
 import { CreateListingInput } from './dto/create-listing.input';
 import { UpdateListingInput } from './dto/update-listing.input';
 
 @Injectable()
 export class ListingsService {
+  constructor(private prisma: PrismaService) {}
   create(createListingInput: CreateListingInput) {
     return 'This action adds a new listing';
   }
 
   findAll() {
-    return [
-      {
-        exampleField: 1,
-      },
-    ];
+    return this.prisma.listing.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} listing`;
+  findOne(listingWhereUniqueInput: Prisma.ListingWhereUniqueInput) {
+    return this.prisma.listing.findUnique({
+      where: listingWhereUniqueInput,
+    });
   }
 
   update(id: number, updateListingInput: UpdateListingInput) {

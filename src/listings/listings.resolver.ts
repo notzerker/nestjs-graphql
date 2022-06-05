@@ -19,12 +19,15 @@ export class ListingsResolver {
 
   @Query('listing')
   findOne(@Args('id') id: number) {
-    return this.listingsService.findOne(id);
+    return this.listingsService.findOne({ id });
   }
 
   @Mutation('updateListing')
   update(@Args('updateListingInput') updateListingInput: UpdateListingInput) {
-    return this.listingsService.update(updateListingInput.id, updateListingInput);
+    return this.listingsService.update(
+      updateListingInput.id,
+      updateListingInput,
+    );
   }
 
   @Mutation('removeListing')

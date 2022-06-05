@@ -11,11 +11,12 @@ datasource db {
 }
 
 model Listing {
-  signer     Int
-  collection Int
+  id         Int      @id @default(autoincrement())
+  signer     String
+  collection String
   tokenId    Int
   price      Int
-  nonce      Int      @id @default(autoincrement())
+  nonce      Int
   startTime  Int
   endTime    Int
   createdAt  DateTime @default(now())
