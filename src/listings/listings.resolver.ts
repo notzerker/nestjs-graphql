@@ -33,6 +33,6 @@ export class ListingsResolver {
 
   @Mutation('removeListing')
   remove(@Args('id') id: number) {
-    return this.listingsService.remove(id);
+    return this.listingsService.remove({ id });
   }
 }

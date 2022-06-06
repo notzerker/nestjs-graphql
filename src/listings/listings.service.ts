@@ -25,7 +25,9 @@ export class ListingsService {
   //   return `This action updates a #${id} listing`;
   // }
 
-  remove(id: number) {
-    return `This action removes a #${id} listing`;
+  remove(listingWhereUniqueInput: Prisma.ListingWhereUniqueInput) {
+    return this.prisma.listing.delete({
+      where: listingWhereUniqueInput,
+    });
   }
 }
