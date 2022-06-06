@@ -27,8 +27,7 @@ input CreateListingInput {
   isCrosschain: Boolean!
   startTime: Int!
   endTime: Int!
-  status: Int
-  createdAt: DateTime
+  status: Int!
 }
 
 input UpdateListingInput {

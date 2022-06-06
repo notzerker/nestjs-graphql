@@ -18,8 +18,7 @@ export class CreateListingInput {
     isCrosschain: boolean;
     startTime: number;
     endTime: number;
-    status?: Nullable<number>;
-    createdAt?: Nullable<DateTime>;
+    status: number;
 }
 
 export class UpdateListingInput {

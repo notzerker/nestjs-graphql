@@ -1,14 +1,15 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ListingsService } from './listings.service';
-import { CreateListingInput } from './dto/create-listing.input';
-import { UpdateListingInput } from './dto/update-listing.input';
+import { Prisma } from '@prisma/client';
 
 @Resolver('Listing')
 export class ListingsResolver {
   constructor(private readonly listingsService: ListingsService) {}
 
   @Mutation('createListing')
-  create(@Args('createListingInput') createListingInput: CreateListingInput) {
+  create(
+    @Args('createListingInput') createListingInput: Prisma.ListingCreateInput,
+  ) {
     return this.listingsService.create(createListingInput);
   }
 
@@ -22,13 +23,13 @@ export class ListingsResolver {
     return this.listingsService.findOne({ id });
   }
 
-  @Mutation('updateListing')
-  update(@Args('updateListingInput') updateListingInput: UpdateListingInput) {
-    return this.listingsService.update(
-      updateListingInput.id,
-      updateListingInput,
-    );
-  }
+  // @Mutation('updateListing')
+  // update(@Args('updateListingInput') updateListingInput: UpdateListingInput) {
+  //   return this.listingsService.update(
+  //     updateListingInput.id,
+  //     updateListingInput,
+  //   );
+  // }
 
   @Mutation('removeListing')
   remove(@Args('id') id: number) {
