@@ -1,0 +1,24 @@
+type Collection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateCollectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateCollectionInput {
+  id: Int!
+}
+
+type Query {
+  collections: [Collection]!
+  collection(id: Int!): Collection
+}
+
+type Mutation {
+  createCollection(createCollectionInput: CreateCollectionInput!): Collection!
+  updateCollection(updateCollectionInput: UpdateCollectionInput!): Collection!
+  removeCollection(id: Int!): Collection
+}

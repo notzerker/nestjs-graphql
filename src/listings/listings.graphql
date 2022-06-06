@@ -5,8 +5,7 @@ type Listing {
   layerZeroChainId: Int!
   signer: String!
   buyer: String
-  collection: String!
-  tokenId: Int!
+  token: Int!
   price: Int!
   nonce: Int!
   isCrosschain: Boolean!
@@ -20,8 +19,7 @@ input CreateListingInput {
   layerZeroChainId: Int!
   signer: String!
   buyer: String
-  collection: String!
-  tokenId: Int!
+  token: Int!
   price: Int!
   nonce: Int!
   isCrosschain: Boolean!

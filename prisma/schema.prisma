@@ -10,13 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id       Int       @id @default(autoincrement())
+  address  String    @unique
+  tokens   Token[]
+  listings Listing[]
+}
+
 model Listing {
   id               Int      @id @default(autoincrement())
   layerZeroChainId Int
   signer           String
   buyer            String?
-  collection       String
-  tokenId          Int
+  token            Token    @relation(fields: [tokenId], references: [id])
   price            Int
   nonce            Int
   isCrosschain     Boolean
@@ -24,4 +30,24 @@ model Listing {
   startTime        Int
   endTime          Int
   createdAt        DateTime @default(now())
+  User             User?    @relation(fields: [userId], references: [id])
+  userId           Int?
+  tokenId          Int      @unique
+}
+
+model Token {
+  id           Int         @id
+  tokenId      Int
+  User         User?       @relation(fields: [userId], references: [id])
+  userId       Int?
+  Collection   Collection? @relation(fields: [collectionId], references: [id])
+  collectionId Int?
+  Listing      Listing[]
+}
+
+model Collection {
+  id      Int     @id @default(autoincrement())
+  address String
+  name    String
+  tokens  Token[]
 }

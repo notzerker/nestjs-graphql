@@ -1,0 +1,30 @@
+type User {
+  id: Int!
+  address: String!
+  tokens: [Token!]!
+  listings: [Listing!]!
+}
+
+input CreateUserInput {
+  id: Int!
+  address: String!
+  tokens: [Int]!
+  listings: [Int]!
+}
+
+input UpdateUserInput {
+  id: Int!
+  tokens: [Int]
+  listings: [Int]
+}
+
+type Query {
+  users: [User]!
+  user(id: Int!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
+}

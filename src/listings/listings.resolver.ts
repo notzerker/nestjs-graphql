@@ -24,15 +24,15 @@ export class ListingsResolver {
     return this.listingsService.findOne({ id });
   }
 
-  @Mutation('updateListing')
-  update(
-    @Args('updateListingInput') updateListingInput: Prisma.ListingUpdateInput,
-  ) {
-    return this.listingsService.update(
-      updateListingInput.id,
-      updateListingInput,
-    );
-  }
+  // @Mutation('updateListing')
+  // update(
+  //   @Args('updateListingInput') updateListingInput: Prisma.ListingUpdateInput,
+  // ) {
+  //   return this.listingsService.update(
+  //     updateListingInput.id,
+  //     updateListingInput,
+  //   );
+  // }
 
   @Mutation('removeListing')
   remove(@Args('id') id: number) {

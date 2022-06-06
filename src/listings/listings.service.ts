@@ -25,12 +25,12 @@ export class ListingsService {
     });
   }
 
-  update(id: number, updateListingInput: Prisma.ListingUpdateInput) {
-    return this.prisma.listing.update({
-      where: { id },
-      data: updateListingInput,
-    });
-  }
+  // update(id: number, updateListingInput: Prisma.ListingUpdateInput) {
+  //   return this.prisma.listing.update({
+  //     where: { id },
+  //     data: updateListingInput,
+  //   });
+  // }
 
   remove(listingWhereUniqueInput: Prisma.ListingWhereUniqueInput) {
     return this.prisma.listing.delete({

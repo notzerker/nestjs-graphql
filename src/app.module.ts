@@ -6,6 +6,9 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ListingsModule } from './listings/listings.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLISODateTime } from '@nestjs/graphql';
+import { UsersModule } from './users/users.module';
+import { TokensModule } from './tokens/tokens.module';
+import { CollectionsModule } from './collections/collections.module';
 
 @Module({
   imports: [
@@ -17,6 +20,9 @@ import { GraphQLISODateTime } from '@nestjs/graphql';
       resolvers: { DateTime: GraphQLISODateTime },
     }),
     ListingsModule,
+    UsersModule,
+    TokensModule,
+    CollectionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
