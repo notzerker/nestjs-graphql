@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '.prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
+import { OrderByParams } from 'src/graphql';
 
 @Injectable()
 export class ListingsService {
@@ -11,8 +12,11 @@ export class ListingsService {
     });
   }
 
-  findAll() {
-    return this.prisma.listing.findMany();
+  findAll(orderBy?: OrderByParams) {
+    const { field, direction } = orderBy || {};
+    return this.prisma.listing.findMany({
+      orderBy: { [field]: direction },
+    });
   }
 
   findOne(listingWhereUniqueInput: Prisma.ListingWhereUniqueInput) {
@@ -21,9 +25,12 @@ export class ListingsService {
     });
   }
 
-  // update(id: number, updateListingInput: UpdateListingInput) {
-  //   return `This action updates a #${id} listing`;
-  // }
+  update(id: number, updateListingInput: Prisma.ListingUpdateInput) {
+    return this.prisma.listing.update({
+      where: { id },
+      data: updateListingInput,
+    });
+  }
 
   remove(listingWhereUniqueInput: Prisma.ListingWhereUniqueInput) {
     return this.prisma.listing.delete({

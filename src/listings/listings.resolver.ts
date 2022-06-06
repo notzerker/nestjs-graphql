@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ListingsService } from './listings.service';
 import { Prisma } from '@prisma/client';
+import { OrderByParams } from 'src/graphql';
 
 @Resolver('Listing')
 export class ListingsResolver {
@@ -14,8 +15,8 @@ export class ListingsResolver {
   }
 
   @Query('listings')
-  findAll() {
-    return this.listingsService.findAll();
+  findAll(@Args('orderBy') orderBy?: OrderByParams) {
+    return this.listingsService.findAll(orderBy);
   }
 
   @Query('listing')
@@ -23,13 +24,15 @@ export class ListingsResolver {
     return this.listingsService.findOne({ id });
   }
 
-  // @Mutation('updateListing')
-  // update(@Args('updateListingInput') updateListingInput: UpdateListingInput) {
-  //   return this.listingsService.update(
-  //     updateListingInput.id,
-  //     updateListingInput,
-  //   );
-  // }
+  @Mutation('updateListing')
+  update(
+    @Args('updateListingInput') updateListingInput: Prisma.ListingUpdateInput,
+  ) {
+    return this.listingsService.update(
+      updateListingInput.id,
+      updateListingInput,
+    );
+  }
 
   @Mutation('removeListing')
   remove(@Args('id') id: number) {

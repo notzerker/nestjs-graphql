@@ -32,10 +32,16 @@ input CreateListingInput {
 
 input UpdateListingInput {
   id: Int!
+  price: Int!
+}
+
+input OrderByParams {
+  field: String!
+  direction: String!
 }
 
 type Query {
-  listings: [Listing]!
+  listings(orderBy: OrderByParams): [Listing]!
   listing(id: Int!): Listing
 }
 
