@@ -17,8 +17,8 @@ export class UsersResolver {
   }
 
   @Query('user')
-  findOne(@Args('id') id: number) {
-    return this.usersService.findOne(id);
+  findOne(@Args('id') userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
+    return this.usersService.findOne(userWhereUniqueInput);
   }
 
   // @Mutation('updateUser')

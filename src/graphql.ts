@@ -46,11 +46,23 @@ export class UpdateTokenInput {
     id: number;
 }
 
-export class CreateUserInput {
+export class TokenInput {
+    id: number;
+    tokenId: number;
+    listings: ListingInput[];
+}
+
+export class ListingInput {
     id: number;
     address: string;
-    tokens: Nullable<number>[];
-    listings: Nullable<number>[];
+    name: string;
+    tokens: TokenInput[];
+}
+
+export class CreateUserInput {
+    address: string;
+    tokens: TokenInput[];
+    listings: ListingInput[];
 }
 
 export class UpdateUserInput {
@@ -126,11 +138,24 @@ export class Token {
     exampleField?: Nullable<number>;
 }
 
+export class TokenType {
+    id: number;
+    tokenId: number;
+    listings: Listing[];
+}
+
+export class ListingType {
+    id: number;
+    address: string;
+    name: string;
+    tokens: Token[];
+}
+
 export class User {
     id: number;
     address: string;
-    tokens: Token[];
-    listings: Listing[];
+    tokens: TokenType[];
+    listings: ListingType[];
 }
 
 export type DateTime = any;

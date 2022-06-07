@@ -1,15 +1,40 @@
-type User {
+type TokenType {
   id: Int!
-  address: String!
-  tokens: [Token!]!
+  tokenId: Int!
   listings: [Listing!]!
 }
 
-input CreateUserInput {
+type ListingType {
   id: Int!
   address: String!
-  tokens: [Int]!
-  listings: [Int]!
+  name: String!
+  tokens: [Token!]!
+}
+
+type User {
+  id: Int!
+  address: String!
+  tokens: [TokenType!]!
+  listings: [ListingType!]!
+}
+
+input TokenInput {
+  id: Int!
+  tokenId: Int!
+  listings: [ListingInput!]!
+}
+
+input ListingInput {
+  id: Int!
+  address: String!
+  name: String!
+  tokens: [TokenInput!]!
+}
+
+input CreateUserInput {
+  address: String!
+  tokens: [TokenInput!]!
+  listings: [ListingInput!]!
 }
 
 input UpdateUserInput {
